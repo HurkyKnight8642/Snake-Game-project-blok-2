@@ -1,15 +1,12 @@
 # instellingen.py - eigenaar: samen
 # Alle vaste waardes van het spel op één plek.
-# Pas dit bestand niet aan zonder overleg - beide bestanden gebruiken dit.
 
-# Venster
-# VENSTER_BREEDTE, VENSTER_HOOGTE, VAK_GROOTTE (grootte van 1 vakje in het grid)
+VENSTER_BREEDTE = 600
+VENSTER_HOOGTE = 600
+VAK_GROOTTE = 20
+FPS = 8
 
-# Snelheid
-# FPS - hoeveel keer per seconde de slang beweegt
-
-# Kleuren (R, G, B)
-# ZWART = achtergrond
-# GROEN = slang
-# ROOD = eten
-# WIT = score-tekst
+ZWART = (0, 0, 0)
+GROEN = (0, 200, 0)
+ROOD = (220, 0, 0)
+WIT = (255, 255, 255)
