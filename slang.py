@@ -1,15 +1,18 @@
-# slang.py - eigenaar: Hongyu
-# De slang zelf: waar hij staat, hoe hij beweegt, hoe hij groeit.
-# De slang is een lijst van posities (tuples): [(x, y), (x, y), ...]
-# Positie 0 in de lijst is altijd de kop.
+# slang.py
+import instellingen
 
-# maak_slang()
-#   Geeft een startslang terug, midden op het speelveld.
+def start_slang():
+    # Begin met een slang van 1 segment, ongeveer in het midden
+    start_x = (instellingen.BREEDTE // instellingen.GRID_GROOTTE) // 2
+    start_y = (instellingen.HOOGTE // instellingen.GRID_GROOTTE) // 2
+    return [(start_x, start_y)]
 
-# beweeg(slang, richting)
-#   Zet een nieuwe kop voor de slang in de opgegeven richting,
-#   en haalt de laatste staart-positie weg. Lengte blijft gelijk.
+def beweeg(slang_lijst, richting, gegeten):
+    kop_x, kop_y = slang_lijst[0]
+    nieuwe_kop = (kop_x + richting[0], kop_y + richting[1])
 
-# groei(slang, richting)
-#   Zelfde als beweeg, maar zonder de staart weg te halen.
-#   Slang wordt dus 1 vakje langer.
+    nieuwe_slang = [nieuwe_kop] + slang_lijst
+    if not gegeten:
+        nieuwe_slang.pop()  # staart weghalen als er niet gegeten is
+
+    return nieuwe_slang

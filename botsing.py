@@ -1,12 +1,17 @@
-# botsing.py - eigenaar: Hongyu
-# Alle controles of er iets geraakt wordt.
-# Elke functie geeft True of False terug.
+# botsing.py
+import instellingen
 
-# raakt_muur(slang)
-#   True als de kop buiten het speelveld komt.
+def check_botsing(slang_lijst):
+    kop = slang_lijst[0]
+    max_x = instellingen.BREEDTE // instellingen.GRID_GROOTTE
+    max_y = instellingen.HOOGTE // instellingen.GRID_GROOTTE
 
-# raakt_zichzelf(slang)
-#   True als de kop op een ander deel van het eigen lichaam staat.
+    # Botsing met de rand
+    if kop[0] < 0 or kop[0] >= max_x or kop[1] < 0 or kop[1] >= max_y:
+        return True
 
-# raakt_eten(slang, eten)
-#   True als de kop op dezelfde positie staat als het eten.
+    # Botsing met zichzelf
+    if kop in slang_lijst[1:]:
+        return True
+
+    return False

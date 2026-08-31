@@ -1,9 +1,8 @@
-# scherm.py - eigenaar: Moenes
-# De teksten en schermen om het spel heen.
+# scherm.py
+import pygame
+import instellingen
 
-# teken_score(venster, score)
-#   Zet de score linksboven in beeld.
-
-# toon_game_over(venster, score)
-#   Laat 'Game Over' zien met de eindscore.
-#   Wacht tot de speler op een toets drukt om opnieuw te starten.
+def maak_scherm():
+    scherm = pygame.display.set_mode((instellingen.BREEDTE, instellingen.HOOGTE))
+    pygame.display.set_caption("Snake Game")
+    return scherm

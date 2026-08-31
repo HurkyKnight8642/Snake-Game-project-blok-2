@@ -1,12 +1,27 @@
-# tekenen.py - eigenaar: Moenes
-# Alles wat op het scherm getekend wordt.
-# Krijgt posities aangeleverd vanuit slang.py en eten.py.
+# tekenen.py
+import pygame
+import instellingen
 
-# teken_achtergrond(venster)
-#   Maakt het scherm leeg (vult met ZWART).
+def teken_alles(scherm, slang_lijst, eten_positie, score):
+    scherm.fill(instellingen.ZWART)
 
-# teken_slang(venster, slang)
-#   Tekent elk vakje van de slang-lijst als een groen blokje.
+    for segment in slang_lijst:
+        rect = pygame.Rect(
+            segment[0] * instellingen.GRID_GROOTTE,
+            segment[1] * instellingen.GRID_GROOTTE,
+            instellingen.GRID_GROOTTE,
+            instellingen.GRID_GROOTTE
+        )
+        pygame.draw.rect(scherm, instellingen.GROEN, rect)
 
-# teken_eten(venster, eten)
-#   Tekent het eten als een rood blokje.
+    eten_rect = pygame.Rect(
+        eten_positie[0] * instellingen.GRID_GROOTTE,
+        eten_positie[1] * instellingen.GRID_GROOTTE,
+        instellingen.GRID_GROOTTE,
+        instellingen.GRID_GROOTTE
+    )
+    pygame.draw.rect(scherm, instellingen.ROOD, eten_rect)
+
+    font = pygame.font.SysFont(None, 30)
+    tekst = font.render(f"Score: {score}", True, instellingen.WIT)
+    scherm.blit(tekst, (10, 10))

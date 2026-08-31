@@ -1,9 +1,14 @@
-# besturing.py - eigenaar: Moenes
-# Leest het toetsenbord uit en bepaalt de richting.
-# Een richting is een tuple: (0, -1) = omhoog, (0, 1) = omlaag,
-# (-1, 0) = links, (1, 0) = rechts
+# besturing.py
+import pygame
 
-# lees_toets(huidige_richting)
-#   Kijkt welke pijltjestoets is ingedrukt en geeft de nieuwe richting terug.
-#   Als er niets is ingedrukt: geef de huidige richting terug.
-#   Voorkomt dat de slang direct omkeert (bijv. van links naar rechts).
+def verwerk_input(event, huidige_richting):
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_UP and huidige_richting != (0, 1):
+            return (0, -1)
+        if event.key == pygame.K_DOWN and huidige_richting != (0, -1):
+            return (0, 1)
+        if event.key == pygame.K_LEFT and huidige_richting != (1, 0):
+            return (-1, 0)
+        if event.key == pygame.K_RIGHT and huidige_richting != (-1, 0):
+            return (1, 0)
+    return huidige_richting

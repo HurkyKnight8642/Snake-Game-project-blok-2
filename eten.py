@@ -1,7 +1,12 @@
-# eten.py - eigenaar: Hongyu
-# Het eten: waar het ligt en hoe er nieuw eten verschijnt.
+# eten.py
+import random
+import instellingen
 
-# spawn_eten(slang)
-#   Kiest een willekeurige positie op het grid.
-#   Controleert dat die positie niet op de slang ligt - anders opnieuw kiezen.
-#   Geeft een tuple terug: (x, y)
+def spawn_eten(slang_lijst):
+    max_x = (instellingen.BREEDTE // instellingen.GRID_GROOTTE) - 1
+    max_y = (instellingen.HOOGTE // instellingen.GRID_GROOTTE) - 1
+
+    while True:
+        positie = (random.randint(0, max_x), random.randint(0, max_y))
+        if positie not in slang_lijst:
+            return positie
